@@ -22,8 +22,12 @@ class _WidgetScreenState extends State<WidgetScreen> {
     List<Widget> screens = [
       SizedBox(
           child: ListView.builder(
+              shrinkWrap: true,
+              physics: const BouncingScrollPhysics(),
+              itemExtent: 180*2,
               itemCount: products.length,
-              itemBuilder: (_, index) => ListTile(
+              itemBuilder: (_, index) => 
+              ListTile(
                   leading: CircleAvatar(
                     child: Text(products[index].id.toString()),
                   ),
