@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:todo_app/screens/widgets_sreen.dart';
 
 class PageAccueil extends StatefulWidget {
   const PageAccueil({super.key});
@@ -13,7 +14,7 @@ class _PageAccueilState extends State<PageAccueil> {
   @override
   Widget build(BuildContext context) {
     // recuperer la taille de l'ecran
-    var size = MediaQuery.of(context).size;
+    Size size = MediaQuery.of(context).size;
     double screenHeight = size.height;
     double screenWidth = size.width;
 
@@ -37,43 +38,49 @@ class _PageAccueilState extends State<PageAccueil> {
         ],
       ),
       body: Container(
-        height: screenHeight,
-        width: screenWidth,
-        color: const Color.fromARGB(255, 235, 235, 235),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            const Text(
-              "Bienvenue, ajouter une tache",
-              style: TextStyle(fontSize: 24, fontStyle: FontStyle.italic),
-            ),
-            MaterialButton(
-              color: Colors.white,
-              elevation: 3.0,
-              onPressed: () {},
-              child: const Text(
-                'Ajouter une tache',
-                style: TextStyle(color: Colors.orange),
+          height: screenHeight,
+          width: screenWidth,
+          color: const Color.fromARGB(255, 235, 235, 235),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              const Text(
+                "Bienvenue, ajouter une tache",
+                style: TextStyle(fontSize: 24, fontStyle: FontStyle.italic),
               ),
-            ),
+              MaterialButton(
+                color: Colors.white,
+                elevation: 3.0,
+                onPressed: () {
+                  Navigator.push(
+                    context, 
+                    MaterialPageRoute(
+                      builder: (_) => const WidgetScreen()
+                    )
+                  );
+                  
+                },
+                child: const Text(
+                  'Ouvrir l\'ecran des Widgets',
+                  style: TextStyle(color: Colors.orange),
+                ),
+              ),
 
-            const Divider(
-              height: 20,
-            ), 
-            // afficher des element sur une ligne 
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center, // aficher au centre 
-              children: const [
-                Text('bonjour'), 
-                Icon(Icons.person)
-              ],
-            ), 
-          ],
-        )),
-        floatingActionButton: FloatingActionButton(onPressed: (){}, 
-        child: const Icon(Icons.add)),
-       //bottomNavigationBar: BottomNavigationBar(),
+              const Divider(
+                height: 20,
+              ),
+              // afficher des element sur une ligne
+              Row(
+                mainAxisAlignment:
+                    MainAxisAlignment.center, // aficher au centre
+                children: const [Text('bonjour'), Icon(Icons.person)],
+              ),
+            ],
+          )),
+      floatingActionButton:
+          FloatingActionButton(onPressed: () {}, child: const Icon(Icons.add)),
+      //bottomNavigationBar: BottomNavigationBar(),
     );
   }
 }
