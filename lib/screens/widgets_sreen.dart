@@ -24,10 +24,9 @@ class _WidgetScreenState extends State<WidgetScreen> {
           child: ListView.builder(
               shrinkWrap: true,
               physics: const BouncingScrollPhysics(),
-              itemExtent: 180*2,
+              itemExtent: 180 * 2,
               itemCount: products.length,
-              itemBuilder: (_, index) => 
-              ListTile(
+              itemBuilder: (_, index) => ListTile(
                   leading: CircleAvatar(
                     child: Text(products[index].id.toString()),
                   ),
@@ -35,15 +34,11 @@ class _WidgetScreenState extends State<WidgetScreen> {
                   subtitle: Text('Prix ${products[index].prix}'),
                   trailing: IconButton(
                     onPressed: () {
-                      ScaffoldMessenger.of(context)
-                          .showSnackBar(
-                            SnackBar(
-                              content: Text(
-                              '${products[index].nom} ajouter au panier'), 
-                              duration: const Duration(seconds: 5),
-                             
-                            )
-                          );
+                      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                        content:
+                            Text('${products[index].nom} ajouter au panier'),
+                        duration: const Duration(seconds: 5),
+                      ));
                     },
                     icon: const Icon(Icons.add, size: 25),
                   )))),
@@ -121,4 +116,24 @@ class _WidgetScreenState extends State<WidgetScreen> {
       selectedItem = index;
     });
   }
+}
+
+Widget nScreen() {
+  return Stack(
+    
+    fit: StackFit.expand,
+    children: [
+      // appbar
+      Container(
+        height: 60.0,
+        color: Colors.orange,
+        child:  const Center(child: Text("Titre")),
+      ), 
+
+    // body 
+    SizedBox(
+      child: Image.asset('assets/img.jpeg') ,
+    )
+    ],
+  );
 }

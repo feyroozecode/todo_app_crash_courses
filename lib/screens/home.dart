@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:todo_app/screens/catalog_product.dart';
 import 'package:todo_app/screens/widgets_sreen.dart';
 
 class PageAccueil extends StatefulWidget {
@@ -50,16 +52,18 @@ class _PageAccueilState extends State<PageAccueil> {
                 style: TextStyle(fontSize: 24, fontStyle: FontStyle.italic),
               ),
               MaterialButton(
+                color: Colors.orange,
+                onPressed: () {
+                  Get.to(CatalogProducts());
+                },
+                child: Text('Catalogue des produit ')
+              ),
+              MaterialButton(
                 color: Colors.white,
                 elevation: 3.0,
                 onPressed: () {
-                  Navigator.push(
-                    context, 
-                    MaterialPageRoute(
-                      builder: (_) => const WidgetScreen()
-                    )
-                  );
-                  
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (_) => const WidgetScreen()));
                 },
                 child: const Text(
                   'Ouvrir l\'ecran des Widgets',
